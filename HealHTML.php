@@ -128,6 +128,11 @@ class HealHTML extends HealDocument {
 		echo str_replace(" ","&nbsp;",htmlspecialchars($this->__toString()));
 		echo "</pre>";
 	}
+
+	public function html($title, $charset='UTF-8'){
+		$html = $this->el('html');
+		return [$html->head($title, $charset),$html->el('body')];
+	}
 }
 
 class HealHTMLElement extends HealElement {
