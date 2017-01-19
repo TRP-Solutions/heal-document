@@ -78,6 +78,20 @@ trait HealHTMLNodeParent {
 		return $option;
 	}
 
+	public function options($iterable){
+		$options = [];
+		if(is_a($iterable, 'mysqli_result')){
+			foreach($iterable as $row){
+				$options[] = $this->option($row['name'],$row['id']);
+			}
+		} else {
+			foreach($iterable as $value => $text){
+				$options[] = $this->option($text, $value);
+			}
+		}
+		return $options;
+	}
+
 	public function checkbox($name, $checked = false, $value = 'on'){
 		if(!isset($id)) $id = strpos($name,"[")===false ? $name : substr($name,0,strpos($name,"["))."_".$value;
 		$input = $this->el('input',['type'=>'checkbox','name'=>$name,'id'=>$name]);
