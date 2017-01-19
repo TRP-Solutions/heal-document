@@ -97,12 +97,6 @@ trait HealHTMLNodeParent {
 		return $input;
 	}
 
-	public function disabled($value = '', $id = null){
-		$input = $this->el('input',['type'=>'text']);
-		$input->at('disabled')->at('value', $value, HEAL_ATTR_ESCAPE);
-		if(isset($id)) $input->at('id',$id);
-	}
-
 	public function textarea($name, $content = '', $id = null){
 		$textarea = $this->el('textarea',['name'=>$name])->te($content);
 		if(isset($id)) $textarea->at('id',$id);
