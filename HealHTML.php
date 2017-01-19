@@ -54,7 +54,7 @@ trait HealHTMLNodeParent {
 	public function input($name, $id = null, $value = null){
 		$input = $this->el('input',['type'=>'text','name'=>$name]);
 		if(isset($id)) $input->at('id',$id);
-		if(isset($value)) $input->at('value', $value, HEAL_ATTR_ESCAPE);
+		if(isset($value)) $input->at('value', $value);
 		return $input;
 	}
 
@@ -65,7 +65,7 @@ trait HealHTMLNodeParent {
 	}
 
 	public function hidden($name, $value){
-		return $this->el('input',['type'=>'hidden','name'=>$name,'value'=>$value], HEAL_ATTR_ESCAPE);
+		return $this->el('input',['type'=>'hidden','name'=>$name,'value'=>$value]);
 	}
 
 	public function select($name, $id = null){
@@ -77,7 +77,7 @@ trait HealHTMLNodeParent {
 	public function option($text, $value = null, $selected = false){
 		$option = $this->el('option')->te($text);
 		if($selected) $option->at('selected');
-		if(isset($value)) $option->at('value', $value, HEAL_ATTR_ESCAPE);
+		if(isset($value)) $option->at('value', $value);
 		return $option;
 	}
 
@@ -85,14 +85,14 @@ trait HealHTMLNodeParent {
 		if(!isset($id)) $id = strpos($name,"[")===false ? $name : substr($name,0,strpos($name,"["))."_".$value;
 		$input = $this->el('input',['type'=>'checkbox','name'=>$name,'id'=>$id]);
 		if($checked) $input->at('checked');
-		if($value != 'on') $input->at('value',$value, HEAL_ATTR_ESCAPE);
+		if($value != 'on') $input->at('value',$value);
 		return $input;
 	}
 
 	public function radio($name, $value, $checked = false, $id = null){
 		if(!isset($id)) $id = "$name:$value";
 		$input = $this->el('input',['type'=>'radio','name'=>$name,'id'=>$id]);
-		$input->at('value',$value, HEAL_ATTR_ESCAPE);
+		$input->at('value',$value);
 		if($checked) $input->at('checked');
 		return $input;
 	}
@@ -111,12 +111,12 @@ trait HealHTMLNodeParent {
 	}
 
 	public function button($value, $onclick){
-		return $this->el('input',['type'=>'button','value'=>$value,'onclick'=>$onclick], HEAL_ATTR_ESCAPE);
+		return $this->el('input',['type'=>'button','value'=>$value,'onclick'=>$onclick]);
 	}
 
 	public function submit($value = null){
 		$submit = $this->el('input',['type'=>'submit']);
-		if(isset($value)) $submit->at('value', $value, HEAL_ATTR_ESCAPE);
+		if(isset($value)) $submit->at('value', $value);
 		return $submit;
 	}
 }

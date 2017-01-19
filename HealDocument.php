@@ -1,6 +1,6 @@
 <?php
 define('HEAL_ATTR_APPEND',1);
-define('HEAL_ATTR_ESCAPE',2);
+define('HEAL_ATTR_NO_ESCAPE',2);
 
 trait HealNodeParent {
 	public function el($name, $attributes = [], $attr_options = 0){
@@ -56,8 +56,8 @@ class HealElement extends DOMElement {
 	public function at($name, $value = null, $options = 0){
 		$attr = $this->ownerDocument->createAttribute($name);
 		if(isset($value)){
-			$escape = $options & HEAL_ATTR_ESCAPE;
-			$value = $escape ? htmlspecialchars($value) : $value;
+			$no_escape = $options & HEAL_ATTR_NO_ESCAPE;
+			$value = $no_escape ? $value : htmlspecialchars($value);
 
 			$append = $options & HEAL_ATTR_APPEND;
 			if($append && $this->hasAttribute($name)){
