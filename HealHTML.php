@@ -51,27 +51,24 @@ trait HealHTMLNodeParent {
 		return $label;
 	}
 
-	public function input($name, $id = null, $value = null){
-		$input = $this->el('input',['type'=>'text','name'=>$name]);
-		if(isset($id)) $input->at('id',$id);
+	public function input($name, $value = null){
+		$input = $this->el('input',['type'=>'text','name'=>$name,'id'=>$name]);
 		if(isset($value)) $input->at('value', $value);
 		return $input;
 	}
 
-	public function password($name, $id = null){
-		$input = $this->el('input', ['type'=>'password','name'=>$name]);
+	public function password($name){
+		$input = $this->el('input', ['type'=>'password','name'=>$name,'id'=>$name]);
 		if(isset($id)) $input->at('id',$id);
 		return $input;
 	}
 
 	public function hidden($name, $value){
-		return $this->el('input',['type'=>'hidden','name'=>$name,'value'=>$value]);
+		return $this->el('input',['type'=>'hidden','name'=>$name,'value'=>$value,'id'=>$name]);
 	}
 
-	public function select($name, $id = null){
-		$select = $this->el('select',['name'=>$name]);
-		if(isset($id)) $select->at('id',$id);
-		return $select;
+	public function select($name){
+		return $this->el('select',['name'=>$name,'id'=>$name]);
 	}
 
 	public function option($text, $value = null, $selected = false){
@@ -81,30 +78,28 @@ trait HealHTMLNodeParent {
 		return $option;
 	}
 
-	public function checkbox($name, $checked = false, $id = null, $value = 'on'){
+	public function checkbox($name, $checked = false, $value = 'on'){
 		if(!isset($id)) $id = strpos($name,"[")===false ? $name : substr($name,0,strpos($name,"["))."_".$value;
-		$input = $this->el('input',['type'=>'checkbox','name'=>$name,'id'=>$id]);
+		$input = $this->el('input',['type'=>'checkbox','name'=>$name,'id'=>$name]);
 		if($checked) $input->at('checked');
 		if($value != 'on') $input->at('value',$value);
 		return $input;
 	}
 
-	public function radio($name, $value, $checked = false, $id = null){
+	public function radio($name, $value, $checked = false){
 		if(!isset($id)) $id = "$name:$value";
-		$input = $this->el('input',['type'=>'radio','name'=>$name,'id'=>$id]);
+		$input = $this->el('input',['type'=>'radio','name'=>$name,'id'=>$name]);
 		$input->at('value',$value);
 		if($checked) $input->at('checked');
 		return $input;
 	}
 
-	public function textarea($name, $content = '', $id = null){
-		$textarea = $this->el('textarea',['name'=>$name])->te($content);
-		if(isset($id)) $textarea->at('id',$id);
+	public function textarea($name, $content = ''){
+		return $this->el('textarea',['name'=>$name,'id'=>$name])->te($content);
 	}
 
-	public function file($name, $id = null, $multiple = false){
-		$input = $this->el('input',['type'=>'file']);
-		if(isset($id)) $input->at('id',$id);
+	public function file($name, $multiple = false){
+		$input = $this->el('input',['type'=>'file','id'=>$name]);
 		if($multiple) $input->at('multiple')->at('name',$name.'[]');
 		else $input->at('name',$name);
 		return $input;
