@@ -32,4 +32,4 @@ class HealHTMLElement extends HealElement {
 	public HealHTMLElement at(string $name [, string $value [, int $options]])
 }
 ```
-All non-inherited methods are shared with `HealHTML` and documented there.
+All non-inherited methods are shared with `HealHTML` and [documented there](HealHTML.md).
