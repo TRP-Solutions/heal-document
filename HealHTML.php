@@ -46,6 +46,10 @@ trait HealHTMLNodeParent {
 		return $a;
 	}
 
+	public function img($src, $alt){
+		return $this->el('img',['src'=>$src,'alt'=>$alt]);
+	}
+
 	public function label($text = null, $for = null){
 		$label = $this->el('label', isset($for) ? ['for'=>$for] : []);
 		if(isset($for)) $label->at('for',$for);

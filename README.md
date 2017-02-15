@@ -97,6 +97,7 @@ class HealHTML extends HealDocument {
 	public HealHTMLElement css(string $path)
 	public HealHTMLElement p(string $text)
 	public HealHTMLElement a(string $href [, string $text])
+	public HealHTMLElement img(string $src, string $alt)
 	public HealHTMLElement form([string $action [, string $method]])
 	public HealHTMLElement label([string $text [, string $for]])
 	public HealHTMLElement input(string $name [, string $value])
@@ -200,6 +201,17 @@ Parameter | Description
 --- | ---
 `href` | The address of the linked content.
 `text` | The text content of the element.
+
+### `HealHTML->img(...)`
+```PHP
+public HealHTMLElement img(string $src, string $alt)
+```
+Creates an `img` element with the given src and alt text. Returns the newly created element.
+
+Parameter | Description
+--- | ---
+`src` | The address of the image.
+`alt` | The alternative text; should provide a description or placeholder for the image.
 
 ### `HealHTML->form(...)`
 ```PHP
@@ -370,6 +382,7 @@ class HealHTMLElement extends HealElement {
 	public HealHTMLElement css(string $path)
 	public HealHTMLElement p(string $text)
 	public HealHTMLElement a(string $href [, string $text])
+	public HealHTMLElement img(string $src, string $alt)
 	public HealHTMLElement form([string $action [, string $method]])
 	public HealHTMLElement label([string $text [, string $for]])
 	public HealHTMLElement input(string $name [, string $value])
