@@ -15,7 +15,7 @@ trait HealNodeParent {
 	}
 
 	public function te($str, $text_options = 0){
-		if($text_options | HEAL_TEXT_NL2BR){
+		if($text_options & HEAL_TEXT_NL2BR){
 			$lines = explode("\n",$str);
 			$firstline = true;
 			foreach($lines as $line){
