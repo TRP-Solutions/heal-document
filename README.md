@@ -96,7 +96,7 @@ class HealHTML extends HealDocument {
 	public HealHTMLElement link(string $rel, string $href [, array $attr])
 	public HealHTMLElement css(string $path)
 	public HealHTMLElement p(string $text)
-	public HealHTMLElement a(string $href, string $text)
+	public HealHTMLElement a(string $href [, string $text])
 	public HealHTMLElement form([string $action [, string $method]])
 	public HealHTMLElement label([string $text [, string $for]])
 	public HealHTMLElement input(string $name [, string $value])
@@ -192,7 +192,7 @@ Parameter | Description
 
 ### `HealHTML->a(...)`
 ```PHP
-public HealHTMLElement a(string $href, string $text)
+public HealHTMLElement a(string $href [, string $text])
 ```
 Creates an `a` element with the given text as content. Returns the newly created element.
 
@@ -369,7 +369,7 @@ class HealHTMLElement extends HealElement {
 	public HealHTMLElement link(string $rel, string $href [, array $attr])
 	public HealHTMLElement css(string $path)
 	public HealHTMLElement p(string $text)
-	public HealHTMLElement a(string $href, string $text)
+	public HealHTMLElement a(string $href [, string $text])
 	public HealHTMLElement form([string $action [, string $method]])
 	public HealHTMLElement label([string $text [, string $for]])
 	public HealHTMLElement input(string $name [, string $value])

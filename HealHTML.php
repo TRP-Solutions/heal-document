@@ -40,8 +40,10 @@ trait HealHTMLNodeParent {
 		return $this->el('p')->te($text);
 	}
 
-	public function a($href, $text){
-		return $this->el('a', ['href'=>$href])->te($text);
+	public function a($href, $text = ''){
+		$a = $this->el('a', ['href'=>$href])
+		if(!empty($text)) $a->te($text);
+		return $a;
 	}
 
 	public function label($text = null, $for = null){
