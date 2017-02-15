@@ -10,7 +10,7 @@ The library supplies four classes `HealDocument`, `HealElement`, `HealHTML`, and
 class HealDocument extends DOMDocument {
 	/* Methods */
 	public HealElement el(string $name [, array $attributes [, int $attr_options]])
-	public HealDocument te(string $str)
+	public HealDocument te(string $str [, int $text_options])
 	public HealDocument co(string $str)
 	public bool fr(string $str)
 }
@@ -29,13 +29,18 @@ Parameter | Description
 
 ### `HealDocument->te(...)`
 ```PHP
-public HealDocument te(string $str)
+public HealDocument te(string $str [, int $text_options])
 ```
 Create a new text node and appends it to the parent. Returns the parent to allow chaining.
 
 Parameter | Description
 --- | ---
 `str` | The text content of the new node.
+`text_options` | A bitmask of `HEAL_TEXT_*` constants.
+
+Constant | Description
+--- | ---
+`HEAL_TEXT_NL2BR` | Inserts `br` elements between every line of the input.
 
 ### `HealDocument->co(...)`
 ```PHP
@@ -60,7 +65,7 @@ Parameter | Description
 class HealElement extends DOMElement {
 	/* Methods */
 	public HealElement el(string $name [, array $attributes [, int $attr_options]])
-	public HealElement te(string $str)
+	public HealElement te(string $str [, int $text_options])
 	public HealElement co(string $str)
 	public bool fr(string $str)
 	public HealElement at(string $name [, string $value [, int $options]])
@@ -115,7 +120,7 @@ class HealHTML extends HealDocument {
 
 	/* Inherited from HealDocument */
 	public HealHTMLElement el(string $name [, array $attributes [, int $attr_options]])
-	public HealHTML te(string $str)
+	public HealHTML te(string $str [, int $text_options])
 	public HealHTML co(string $str)
 	public bool fr(string $str)
 }
@@ -400,7 +405,7 @@ class HealHTMLElement extends HealElement {
 
 	/* Inherited from HealElement */
 	public HealHTMLElement el(string $name [, array $attributes [, int $attr_options]])
-	public HealHTMLElement te(string $str)
+	public HealHTMLElement te(string $str [, int $text_options])
 	public HealHTMLElement co(string $str)
 	public bool fr(string $str)
 	public HealHTMLElement at(string $name [, string $value [, int $options]])
