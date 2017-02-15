@@ -78,15 +78,17 @@ trait HealHTMLNodeParent {
 		return $option;
 	}
 
-	public function options($iterable){
+	public function options($iterable, $selected = null, $compare_options = 0){
 		$options = [];
 		if(is_a($iterable, 'mysqli_result')){
 			foreach($iterable as $row){
-				$options[] = $this->option($row['name'],$row['id']);
+				$is_selected = isset($selected) && ($compare_options & HEAL_COMPARE_STRICT ? $selected === $row['id'] : $selected == $row['id']);
+				$options[] = $this->option($row['name'],$row['id'],$is_selected);
 			}
 		} else {
 			foreach($iterable as $value => $text){
-				$options[] = $this->option($text, $value);
+				$is_selected = isset($selected) && ($compare_options & HEAL_COMPARE_STRICT ? $selected === $value : $selected == $value);
+				$options[] = $this->option($text, $value, $is_selected);
 			}
 		}
 		return $options;

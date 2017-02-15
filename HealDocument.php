@@ -1,6 +1,7 @@
 <?php
-define('HEAL_ATTR_APPEND',1);
-define('HEAL_ATTR_NO_ESCAPE',2);
+define('HEAL_ATTR_APPEND',1); // used in HealElement->at
+define('HEAL_ATTR_NO_ESCAPE',2); // used in HealElement->at
+define('HEAL_COMPARE_STRICT',1); // used in HealHTMLElement->options
 
 trait HealNodeParent {
 	public function el($name, $attributes = [], $attr_options = 0){

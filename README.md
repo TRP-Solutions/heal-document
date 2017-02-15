@@ -104,7 +104,7 @@ class HealHTML extends HealDocument {
 	public HealHTMLElement hidden(string $name, string $value)
 	public HealHTMLElement select(string $name)
 	public HealHTMLElement option(string $text [, string $value [, bool $selected]])
-	public array options(mixed $iterable)
+	public array options(mixed $iterable [, string $selected [, int $compare_options]])
 	public HealHTMLElement checkbox(string $name [, bool $checked [, string $value]])
 	public HealHTMLElement radio(string $name, string $value [, bool $checked])
 	public HealHTMLElement textarea(string $name [, string $content])
@@ -279,13 +279,19 @@ Parameter | Description
 
 ### `HealHTML->options(...)`
 ```PHP
-public array options(mixed $iterable)
+public array options(mixed $iterable [, string $selected [, int $compare_options]])
 ```
 Creates an number of `option` elements, one for each entry in the iterable. Return an array of the newly created elements.
 
 Parameter | Description
 --- | ---
 `iterable` | Either an associative array with key-value pairs or a `mysqli_result` object with `id` and `name` columns.
+`selected` | The key or `id` of the selected pair or row.
+`compare_options` | A bitmask of `HEAL_COMPARE_*` constants.
+
+Constant | Description
+--- | ---
+`HEAL_COMPARE_STRICT` | Use strict equals when determining if the key or `id` is equal to the `selected` argument.
 
 ### `HealHTML->checkbox(...)`
 ```PHP
@@ -371,7 +377,7 @@ class HealHTMLElement extends HealElement {
 	public HealHTMLElement hidden(string $name, string $value)
 	public HealHTMLElement select(string $name)
 	public HealHTMLElement option(string $text [, string $value [, bool $selected]])
-	public array options(mixed $iterable)
+	public array options(mixed $iterable [, string $selected [, int $compare_options]])
 	public HealHTMLElement checkbox(string $name [, bool $checked [, string $value]])
 	public HealHTMLElement radio(string $name, string $value [, bool $checked])
 	public HealHTMLElement textarea(string $name [, string $content])
