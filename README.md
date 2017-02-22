@@ -1,9 +1,11 @@
+![heal-document logo](sample/heal-logo.svg)
+
 # heal-document
 
 heal-document is a small library that extends the standard DOM interface in PHP.
 It is intended to save developer time when generating HTML and XML markup in PHP.
 
-The library supplies four classes in two files:
+The library supplies six classes in three files:
 
 * HealDocument.php
 	* [HealDocument](docs/HealDocument.md)
@@ -11,6 +13,9 @@ The library supplies four classes in two files:
 * HealHTML.php
 	* [HealHTML](docs/HealHTML.md)
 	* [HealHTMLElement](docs/HealHTMLElement.md)
+* HealSVG.php
+	* [HealSVG](docs/HealSVG.md)
+	* [HealSVGElement](docs/HealSVG.md)
 
 An overview of the classes and their functions are included here.
 ```PHP
@@ -94,5 +99,25 @@ class HealHTMLElement extends HealElement {
 	public HealHTMLElement co(string $str)
 	public bool fr(string $str)
 	public HealHTMLElement at(string $name [, string $value [, int $options]])
+}
+
+class HealSVG extends HealDocument {
+	/* Methods */
+	public HealSVGElement svg(string $width, string $height [, int $svg_options])
+
+	/* Inherited from HealDocument */
+	public HealSVGElement el(string $name [, array $attributes [, int $attr_options]])
+	public HealSVG te(string $str [, int $text_options])
+	public HealSVG co(string $str)
+	public bool fr(string $str)
+}
+
+class HealSVGElement extends HealElement {
+	/* Inherited from HealElement */
+	public HealSVGElement el(string $name [, array $attributes [, int $attr_options]])
+	public HealSVGElement te(string $str [, int $text_options])
+	public HealSVGElement co(string $str)
+	public bool fr(string $str)
+	public HealSVGElement at(string $name [, string $value [, int $options]])
 }
 ```
