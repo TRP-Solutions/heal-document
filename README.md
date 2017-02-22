@@ -1,5 +1,3 @@
-![heal-document logo](sample/heal-logo.svg)
-
 # heal-document
 
 heal-document is a small library that extends the standard DOM interface in PHP.
