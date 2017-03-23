@@ -109,8 +109,8 @@ trait HealHTMLNodeParent {
 	}
 
 	public function radio($name, $value, $checked = false){
-		if(!isset($id)) $id = "$name:$value";
-		$input = $this->el('input',['type'=>'radio','name'=>$name,'id'=>$name]);
+		$id = "$name:$value";
+		$input = $this->el('input',['type'=>'radio','name'=>$name,'id'=>$id]);
 		$input->at('value',$value);
 		if($checked) $input->at('checked');
 		return $input;
