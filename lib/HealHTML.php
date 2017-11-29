@@ -52,20 +52,20 @@ trait HealHTMLNodeParent {
 
 	public function label($text = null, $for = null){
 		$label = $this->el('label', isset($for) ? ['for'=>$for] : []);
-		if(isset($for)) $label->at('for',$for);
+		if(isset($for)) $label->at(['for'=>$for]);
 		if(isset($text)) $label->te($text);
 		return $label;
 	}
 
 	public function input($name, $value = null){
 		$input = $this->el('input',['type'=>'text','name'=>$name,'id'=>$name]);
-		if(isset($value)) $input->at('value', $value);
+		if(isset($value)) $input->at(['value'=>$value]);
 		return $input;
 	}
 
 	public function password($name){
 		$input = $this->el('input', ['type'=>'password','name'=>$name,'id'=>$name]);
-		if(isset($id)) $input->at('id',$id);
+		if(isset($id)) $input->at(['id'=>$id]);
 		return $input;
 	}
 
@@ -79,8 +79,8 @@ trait HealHTMLNodeParent {
 
 	public function option($text, $value = null, $selected = false){
 		$option = $this->el('option')->te($text);
-		if($selected) $option->at('selected');
-		if(isset($value)) $option->at('value', $value);
+		if($selected) $option->at(['selected'=>null]);
+		if(isset($value)) $option->at(['value'=>$value]);
 		return $option;
 	}
 
@@ -103,16 +103,16 @@ trait HealHTMLNodeParent {
 	public function checkbox($name, $checked = false, $value = 'on'){
 		if(!isset($id)) $id = strpos($name,"[")===false ? $name : substr($name,0,strpos($name,"["))."_".$value;
 		$input = $this->el('input',['type'=>'checkbox','name'=>$name,'id'=>$name]);
-		if($checked) $input->at('checked');
-		if($value != 'on') $input->at('value',$value);
+		if($checked) $input->at(['checked'=>null]);
+		if($value != 'on') $input->at(['value'=>$value]);
 		return $input;
 	}
 
 	public function radio($name, $value, $checked = false){
 		$id = "$name:$value";
 		$input = $this->el('input',['type'=>'radio','name'=>$name,'id'=>$id]);
-		$input->at('value',$value);
-		if($checked) $input->at('checked');
+		$input->at(['value'=>$value]);
+		if($checked) $input->at(['checked'=>null]);
 		return $input;
 	}
 
@@ -122,8 +122,8 @@ trait HealHTMLNodeParent {
 
 	public function file($name, $multiple = false){
 		$input = $this->el('input',['type'=>'file','id'=>$name]);
-		if($multiple) $input->at('multiple')->at('name',$name.'[]');
-		else $input->at('name',$name);
+		if($multiple) $input->at(['multiple'=>null])->at(['name'=>$name.'[]']);
+		else $input->at(['name'=>$name]);
 		return $input;
 	}
 
@@ -133,7 +133,7 @@ trait HealHTMLNodeParent {
 
 	public function submit($value = null){
 		$submit = $this->el('input',['type'=>'submit']);
-		if(isset($value)) $submit->at('value', $value);
+		if(isset($value)) $submit->at(['value'=>$value]);
 		return $submit;
 	}
 }

@@ -8,9 +8,7 @@ trait HealNodeParent {
 	public function el($name, $attributes = [], $attr_options = 0){
 		$element = static::createElementHeal($name);
 		$this->appendChild($element);
-		foreach($attributes as $name => $value){
-			$element->at($name, $value, $attr_options);
-		}
+		$element->at($attributes,$attr_options);
 		return $element;
 	}
 
@@ -68,20 +66,22 @@ class HealDocument extends DOMDocument {
 class HealElement extends DOMElement {
 	use HealNodeParent;
 
-	public function at($name, $value = null, $options = 0){
-		$attr = $this->ownerDocument->createAttribute($name);
-		if(isset($value)){
-			$no_escape = $options & HEAL_ATTR_NO_ESCAPE;
-			$value = $no_escape ? $value : htmlspecialchars($value);
+	public function at($values, $options = 0){
+		$no_escape = $options & HEAL_ATTR_NO_ESCAPE;
+		$append = $options & HEAL_ATTR_APPEND;
+		foreach($values as $name => $value){
+			$attr = $this->ownerDocument->createAttribute($name);
+			if(isset($value)){
+				$value = $no_escape ? $value : htmlspecialchars($value);
 
-			$append = $options & HEAL_ATTR_APPEND;
-			if($append && $this->hasAttribute($name)){
-				$value = $this->getAttribute($name).' '.$value;
-			}
-			$attr->value = $value;
-		} 
-		$this->appendChild($attr);
-		
+				if($append && $this->hasAttribute($name)){
+					$value = $this->getAttribute($name).' '.$value;
+				}
+				$attr->value = $value;
+			} 
+			$this->appendChild($attr);
+		}
+
 		// return $this to allow chaining
 		return $this;
 	}
