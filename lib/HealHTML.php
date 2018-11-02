@@ -101,7 +101,6 @@ trait HealHTMLNodeParent {
 	}
 
 	public function checkbox($name, $checked = false, $value = 'on'){
-		if(!isset($id)) $id = strpos($name,"[")===false ? $name : substr($name,0,strpos($name,"["))."_".$value;
 		$input = $this->el('input',['type'=>'checkbox','name'=>$name,'id'=>$name]);
 		if($checked) $input->at(['checked'=>null]);
 		if($value != 'on') $input->at(['value'=>$value]);
