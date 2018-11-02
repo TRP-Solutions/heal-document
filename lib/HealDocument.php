@@ -1,7 +1,6 @@
 <?php
 define('HEAL_ATTR_APPEND',1); // used in HealElement->at
 define('HEAL_ATTR_NO_ESCAPE',2); // used in HealElement->at
-define('HEAL_COMPARE_STRICT',1); // used in HealHTMLElement->options
 define('HEAL_TEXT_NL2BR',1); // used in HealElement->te
 
 trait HealNodeParent {

@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__."/HealDocument.php";
+define('HEAL_COMPARE_STRICT',1); // used in HealHTMLElement->options
 
 trait HealHTMLNodeParent {
 	protected static function createElementHeal($name){
@@ -28,8 +29,8 @@ trait HealHTMLNodeParent {
 		return $this->el('meta',['name'=>$name,'content'=>$content]);
 	}
 
-	public function link($rel, $href, $attr = []){
-		return $this->el('link',['rel'=>$rel,'href'=>$href]+$attr);
+	public function link($rel, $href){
+		return $this->el('link',['rel'=>$rel,'href'=>$href]);
 	}
 
 	public function css($path){
@@ -124,10 +125,6 @@ trait HealHTMLNodeParent {
 		if($multiple) $input->at(['multiple'=>null])->at(['name'=>$name.'[]']);
 		else $input->at(['name'=>$name]);
 		return $input;
-	}
-
-	public function button($value, $onclick){
-		return $this->el('input',['type'=>'button','value'=>$value,'onclick'=>$onclick]);
 	}
 
 	public function submit($value = null){
