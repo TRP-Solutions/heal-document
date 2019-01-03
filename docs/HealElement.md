@@ -6,10 +6,10 @@ class HealElement extends DOMElement {
 	public HealElement te(string $str [, int $text_options])
 	public HealElement co(string $str)
 	public bool fr(string $str)
-	public HealElement at(string $name [, string $value [, int $options]])
+	public HealElement at(array $attributes [, int $options])
 }
 ```
-The `el`, `te`, `co` and `fr` methods are shared with `HealDocument` and documented there.
+The `el`, `te`, `co` and `fr` methods are shared with `HealDocument` and [documented there](HealDocument.md).
 
 ### `HealElement->at(...)`
 ```PHP

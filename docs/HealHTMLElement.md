@@ -21,7 +21,6 @@ class HealHTMLElement extends HealElement {
 	public HealHTMLElement radio(string $name, string $value [, bool $checked])
 	public HealHTMLElement textarea(string $name [, string $content])
 	public HealHTMLElement file(string $name [, bool $multiple])
-	public HealHTMLElement button(string $value, string $onclick)
 	public HealHTMLElement submit([string $value])
 
 	/* Inherited from HealElement */
@@ -29,7 +28,7 @@ class HealHTMLElement extends HealElement {
 	public HealHTMLElement te(string $str [, int $text_options])
 	public HealHTMLElement co(string $str)
 	public bool fr(string $str)
-	public HealHTMLElement at(string $name [, string $value [, int $options]])
+	public HealHTMLElement at(array $attributes [, int $options])
 }
 ```
 All non-inherited methods are shared with `HealHTML` and [documented there](HealHTML.md).

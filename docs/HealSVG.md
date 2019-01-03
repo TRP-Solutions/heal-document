@@ -36,6 +36,6 @@ class HealSVGElement extends HealElement {
 	public HealSVGElement te(string $str [, int $text_options])
 	public HealSVGElement co(string $str)
 	public bool fr(string $str)
-	public HealSVGElement at(string $name [, string $value [, int $options]])
+	public HealSVGElement at(array $attributes [, int $options])
 }
 ```
