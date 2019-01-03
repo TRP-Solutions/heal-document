@@ -69,15 +69,19 @@ class HealElement extends DOMElement {
 		$no_escape = $options & HEAL_ATTR_NO_ESCAPE;
 		$append = $options & HEAL_ATTR_APPEND;
 		foreach($values as $name => $value){
-			$attr = $this->ownerDocument->createAttribute($name);
-			if(isset($value)){
-				$value = $no_escape ? $value : htmlspecialchars($value);
+			if(is_numeric($name)){
+				$attr = $this->ownerDocument->createAttribute($value);
+			} else {
+				$attr = $this->ownerDocument->createAttribute($name);
+				if(isset($value)){
+					$value = $no_escape ? $value : htmlspecialchars($value);
 
-				if($append && $this->hasAttribute($name)){
-					$value = $this->getAttribute($name).' '.$value;
+					if($append && $this->hasAttribute($name)){
+						$value = $this->getAttribute($name).' '.$value;
+					}
+					$attr->value = $value;
 				}
-				$attr->value = $value;
-			} 
+			}
 			$this->appendChild($attr);
 		}
 

@@ -12,7 +12,9 @@ class HealDocument extends DOMDocument {
 ```PHP
 public HealElement el(string $name [, array $attributes [, int $attr_options]])
 ```
-Creates a new element node and appends it to the parent. Returns the newly created element.
+Creates a new element node and appends it to the parent.
+If a key-value pair in `attributes` has a numerical index (such as when not specifying a key in literal array notation, or appending a value to an array), the value is used as the name of an empty attribute.
+Returns the newly created element.
 
 Parameter | Description
 --- | ---

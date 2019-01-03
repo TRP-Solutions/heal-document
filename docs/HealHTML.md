@@ -48,7 +48,7 @@ Creates a minimal element tree with the `head` element prefilled with charset `m
 Parameter | Description
 --- | ---
 `title` | The documents title.
-`charset` | The documents charset.
+`charset` | The documents charset. Defaults to 'UTF-8'.
 
 ### `HealHTML->head(...)`
 ```PHP
@@ -59,7 +59,7 @@ Creates a `head` element prefilled with charset `meta` element and a `title` ele
 Parameter | Description
 --- | ---
 `title` | The documents title.
-`charset` | The documents charset.
+`charset` | The documents charset. Defaults to 'UTF-8'.
 
 ### `HealHTML->metadata(...)`
 ```PHP
@@ -74,7 +74,7 @@ Parameter | Description
 
 ### `HealHTML->link(...)`
 ```PHP
-public HealHTMLElement link(string $rel, string $href [, array $attr])
+public HealHTMLElement link(string $rel, string $href)
 ```
 Creates a `link` element and sets the `rel` and `href` attributes. Returns the newly created element.
 
@@ -82,7 +82,6 @@ Parameter | Description
 --- | ---
 `rel` | The relation to the external document.
 `href` | A reference to an external document.
-`attr` | An associative array of additional attributes.
 
 ### `HealHTML->css(...)`
 ```PHP
@@ -141,12 +140,12 @@ Parameter | Description
 ```PHP
 public HealHTMLElement label([string $text [, string $for]])
 ```
-Creates a `label` element with the given text as context. Returns the newly created element.
+Creates a `label` element with the given text as content. Returns the newly created element.
 
 Parameter | Description
 --- | ---
-`action` | The endpoint that the form sends data to when submitted.
-`method` | The method of sending data; should be `get` or `post`. Default is `get`.
+`text` | The text content of the element.
+`for` | The id of the `input` element that is being labelled.
 
 ### `HealHTML->input(...)`
 ```PHP
@@ -206,7 +205,7 @@ Parameter | Description
 ```PHP
 public array options(mixed $iterable [, string $selected [, int $compare_options]])
 ```
-Creates an number of `option` elements, one for each entry in the iterable. Return an array of the newly created elements.
+Creates an number of `option` elements, one for each entry in the iterable. Returns an array of the newly created elements.
 
 Parameter | Description
 --- | ---
@@ -263,17 +262,6 @@ Parameter | Description
 --- | ---
 `name` | The name of the file input field.
 `multiple` | A boolean indicating whether the input field should accept multiple files.
-
-### `HealHTML->button(...)`
-```PHP
-public HealHTMLElement button(string $value, string $onclick)
-```
-Creates an `input` element with type `button`. Returns the newly created element.
-
-Parameter | Description
---- | ---
-`value` | The text on the button.
-`onclick` | JavaScript code to be run when the button is clicked.
 
 ### `HealHTML->submit(...)`
 ```PHP

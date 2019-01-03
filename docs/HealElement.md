@@ -13,14 +13,15 @@ The `el`, `te`, `co` and `fr` methods are shared with `HealDocument` and documen
 
 ### `HealElement->at(...)`
 ```PHP
-public HealElement at(string $name [, string $value [, int $options]])
+public HealElement at(array $attributes [, int $options])
 ```
-Creates a new attribute node and adds it to the element. Returns the element to allow chaining.
+Creates one or more new attribute nodes and adds them to the element.
+If a key-value pair in `attributes` has a numerical index (such as when not specifying a key in literal array notation, or appending a value to an array), the value is used as the name of an empty attribute.
+Returns the element to allow chaining.
 
 Parameter | Description
 --- | ---
-`name` | The name of the attribute.
-`value` | The value of the attribute.
+`attributes` | An array containing attributes to be added to the element as key-value pairs.
 `options` | A bitmask of `HEAL_ATTR_*` constants.
 
 Constant | Description
