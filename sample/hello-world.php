@@ -2,7 +2,7 @@
 require_once "../lib/HealHTML.php";
 
 $doc = new HealHtml();
-list($head,$body) = $doc->html('Hello World');
+list($head,$body) = $doc->html('Hello World','en');
 
 $head->el('style')
 	->te('body { width: 650px; border: 1px solid black; padding: 0 1em; box-sizing: border-box; }')

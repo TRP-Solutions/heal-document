@@ -147,8 +147,9 @@ class HealHTML extends HealDocument {
 		echo "</pre>";
 	}
 
-	public function html($title, $charset='UTF-8'){
+	public function html($title, $language=null, $charset='UTF-8'){
 		$html = $this->el('html');
+		if($language) $html->at(['lang'=>$language]);
 		return [$html->head($title, $charset),$html->el('body')];
 	}
 }
