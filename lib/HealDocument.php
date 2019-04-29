@@ -80,6 +80,10 @@ class HealElement extends DOMElement {
 						$value = $this->getAttribute($name).' '.$value;
 					}
 					$attr->value = $value;
+				} else {
+					if($append && $this->hasAttribute($name)){
+						continue;
+					}
 				}
 			}
 			$this->appendChild($attr);
