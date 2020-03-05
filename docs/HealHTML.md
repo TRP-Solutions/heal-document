@@ -3,12 +3,12 @@
 class HealHTML extends HealDocument {
 	/* Methods */
 	public void showHTML()
-	public array html(string $title [, string $charset])
+	public array html(string $title [, string $language [, string $charset]])
 	public HealHTMLElement head(string $title [, string $charset])
 	public HealHTMLElement metadata(string $name, string $content)
-	public HealHTMLElement link(string $rel, string $href [, array $attr])
+	public HealHTMLElement link(string $rel, string $href)
 	public HealHTMLElement css(string $path)
-	public HealHTMLElement p(string $text)
+	public HealHTMLElement p(string $text [, int $text_options])
 	public HealHTMLElement a(string $href [, string $text])
 	public HealHTMLElement img(string $src, string $alt)
 	public HealHTMLElement form([string $action [, string $method]])
@@ -23,7 +23,6 @@ class HealHTML extends HealDocument {
 	public HealHTMLElement radio(string $name, string $value [, bool $checked])
 	public HealHTMLElement textarea(string $name [, string $content])
 	public HealHTMLElement file(string $name [, bool $multiple])
-	public HealHTMLElement button(string $value, string $onclick)
 	public HealHTMLElement submit([string $value])
 
 	/* Inherited from HealDocument */
@@ -41,13 +40,14 @@ Echoes the HTML document inside a `<pre>` tag. This is meant as a debugging help
 
 ### `HealHTML->html(...)`
 ```PHP
-public array html(string $title [, string $charset])
+public array html(string $title [, string $language [, string $charset]])
 ```
 Creates a minimal element tree with the `head` element prefilled with charset `meta` element and a `title` element. Returns an array of the `head` element and the `body` element.
 
 Parameter | Description
 --- | ---
 `title` | The documents title.
+`language` | The documents language. Defaults to `null` which doesn't write the `lang` attribute.
 `charset` | The documents charset. Defaults to 'UTF-8'.
 
 ### `HealHTML->head(...)`
@@ -95,13 +95,14 @@ Parameter | Description
 
 ### `HealHTML->p(...)`
 ```PHP
-public HealHTMLElement p(string $text)
+public HealHTMLElement p(string $text [, int $text_options])
 ```
 Creates a `p` element with the given text as content. Returns the newly created element.
 
 Parameter | Description
 --- | ---
 `text` | The text content of the element.
+`text_options` | A bitmask of `HEAL_TEXT_*` constants.
 
 ### `HealHTML->a(...)`
 ```PHP

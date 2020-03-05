@@ -37,8 +37,8 @@ trait HealHTMLNodeParent {
 		return $this->link('stylesheet',$path);
 	}
 
-	public function p($text){
-		return $this->el('p')->te($text);
+	public function p($text, $text_options = 0){
+		return $this->el('p')->te($text, $text_options);
 	}
 
 	public function a($href, $text = ''){
