@@ -29,8 +29,8 @@ trait HealHTMLNodeParent {
 		return $this->el('meta',['name'=>$name,'content'=>$content]);
 	}
 
-	public function link($rel, $href){
-		return $this->el('link',['rel'=>$rel,'href'=>$href]);
+	public function link($rel, $href, $attributes = []){
+		return $this->el('link',['rel'=>$rel,'href'=>$href]+$attributes);
 	}
 
 	public function css($path){
