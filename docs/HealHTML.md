@@ -6,7 +6,7 @@ class HealHTML extends HealDocument {
 	public array html(string $title [, string $language [, string $charset]])
 	public HealHTMLElement head(string $title [, string $charset])
 	public HealHTMLElement metadata(string $name, string $content)
-	public HealHTMLElement link(string $rel, string $href [, array $attributes])
+	public HealHTMLElement link(string $rel, string $href)
 	public HealHTMLElement css(string $path)
 	public HealHTMLElement p(string $text [, int $text_options])
 	public HealHTMLElement a(string $href [, string $text])
@@ -74,7 +74,7 @@ Parameter | Description
 
 ### `HealHTML->link(...)`
 ```PHP
-public HealHTMLElement link(string $rel, string $href [, array $attributes])
+public HealHTMLElement link(string $rel, string $href)
 ```
 Creates a `link` element and sets the `rel` and `href` attributes. Returns the newly created element.
 
@@ -82,7 +82,6 @@ Parameter | Description
 --- | ---
 `rel` | The relation to the external document.
 `href` | A reference to an external document.
-`attributes` | An array containing attributes to be added to the element as key-value pairs.
 
 ### `HealHTML->css(...)`
 ```PHP

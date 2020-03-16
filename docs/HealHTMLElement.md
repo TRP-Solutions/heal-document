@@ -4,7 +4,7 @@ class HealHTMLElement extends HealElement {
 	/* Methods */
 	public HealHTMLElement head(string $title [, string $charset])
 	public HealHTMLElement metadata(string $name, string $content)
-	public HealHTMLElement link(string $rel, string $href [, array $attributes])
+	public HealHTMLElement link(string $rel, string $href)
 	public HealHTMLElement css(string $path)
 	public HealHTMLElement p(string $text [, int $text_options])
 	public HealHTMLElement a(string $href [, string $text])
