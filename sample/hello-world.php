@@ -16,4 +16,3 @@ $body->p('This is a simple example of how a HTML document can be constructed.');
 $body->img('heal-logo.php','heal-document logo');
 
 echo $doc;
-?>

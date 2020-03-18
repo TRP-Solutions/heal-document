@@ -197,4 +197,3 @@ $path->at(["d"=>"h-17.11 l3.027-17.242"],HEAL_ATTR_APPEND);
 $path->at(["d"=>"h54.229z"],HEAL_ATTR_APPEND);
 
 echo $doc;
-?>

@@ -93,4 +93,3 @@ class HealElement extends DOMElement {
 		return $this;
 	}
 }
-?>

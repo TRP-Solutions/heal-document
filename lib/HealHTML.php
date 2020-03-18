@@ -157,4 +157,3 @@ class HealHTML extends HealDocument {
 class HealHTMLElement extends HealElement {
 	use HealHTMLNodeParent;
 }
-?>

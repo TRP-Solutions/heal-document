@@ -32,4 +32,3 @@ class HealSVG extends HealDocument {
 class HealSVGElement extends HealElement {
 	use HealSVGNodeParent;
 }
-?>
