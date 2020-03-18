@@ -1,4 +1,8 @@
 <?php
+/*
+HealDocument is licensed under the Apache License 2.0 license
+https://github.com/TRP-Solutions/heal-document/blob/master/LICENSE.txt
+*/
 define('HEAL_ATTR_APPEND',1); // used in HealElement->at
 define('HEAL_ATTR_NO_ESCAPE',2); // used in HealElement->at
 define('HEAL_TEXT_NL2BR',1); // used in HealElement->te
