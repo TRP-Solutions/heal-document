@@ -84,7 +84,7 @@ trait HealHTMLNodeParent {
 
 	public function option($text, $value = null, $selected = false){
 		$option = $this->el('option')->te($text);
-		if($selected) $option->at(['selected'=>null]);
+		if($selected) $option->at(['selected']);
 		if(isset($value)) $option->at(['value'=>$value]);
 		return $option;
 	}
@@ -107,7 +107,7 @@ trait HealHTMLNodeParent {
 
 	public function checkbox($name, $checked = false, $value = 'on'){
 		$input = $this->el('input',['type'=>'checkbox','name'=>$name,'id'=>$name]);
-		if($checked) $input->at(['checked'=>null]);
+		if($checked) $input->at(['checked']);
 		if($value != 'on') $input->at(['value'=>$value]);
 		return $input;
 	}
@@ -116,7 +116,7 @@ trait HealHTMLNodeParent {
 		$id = "$name:$value";
 		$input = $this->el('input',['type'=>'radio','name'=>$name,'id'=>$id]);
 		$input->at(['value'=>$value]);
-		if($checked) $input->at(['checked'=>null]);
+		if($checked) $input->at(['checked']);
 		return $input;
 	}
 
@@ -126,7 +126,7 @@ trait HealHTMLNodeParent {
 
 	public function file($name, $multiple = false){
 		$input = $this->el('input',['type'=>'file','id'=>$name]);
-		if($multiple) $input->at(['multiple'=>null])->at(['name'=>$name.'[]']);
+		if($multiple) $input->at(['multiple'])->at(['name'=>$name.'[]']);
 		else $input->at(['name'=>$name]);
 		return $input;
 	}
