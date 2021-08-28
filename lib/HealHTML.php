@@ -22,9 +22,9 @@ trait HealHTMLNodeParent {
 		return $this->el('form', $attr);
 	}
 
-	public function head($title, $charset='UTF-8'){
+	public function head($title = null, $charset = 'UTF-8'){
 		$head = $this->el('head');
-		$head->el('title')->te($title);
+		if(!empty($title)) $head->el('title')->te($title);
 		$head->el('meta',['charset'=>$charset]);
 		return $head;
 	}
