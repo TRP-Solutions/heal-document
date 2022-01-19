@@ -61,8 +61,12 @@ class HealDocument extends DOMDocument {
 	use HealNodeParent;
 
 	public function __toString(){
-		$this->formatOutput = true;
-		return $this->saveXML();
+		if(strtolower($this->firstChild->nodeName) == 'html'){
+			return "<!DOCTYPE html>".PHP_EOL.$this->saveHTML();
+		} else {
+			$this->formatOutput = true;
+			return $this->saveXML();
+		}
 	}
 }
 
