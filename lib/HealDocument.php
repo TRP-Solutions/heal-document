@@ -60,8 +60,19 @@ trait HealNodeParent {
 class HealDocument extends DOMDocument {
 	use HealNodeParent;
 
+	private static $toStringFormat;
+
+	public static function stringFormat($format){
+		switch($format){
+			case 'html': self::$toStringFormat = 'html'; break;
+			default: self::$toStringFormat = 'xml';
+		}
+	}
+
 	public function __toString(){
-		if(strtolower($this->firstChild->nodeName) == 'html'){
+		if(self::$toStringFormat=='html'){
+			return $this->saveHTML();
+		} elseif(!isset(self::$toStringFormat) && strtolower($this->firstChild->nodeName) == 'html'){
 			return "<!DOCTYPE html>".PHP_EOL.$this->saveHTML();
 		} else {
 			$this->formatOutput = true;
