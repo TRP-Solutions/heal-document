@@ -3,9 +3,6 @@
 HealDocument is licensed under the Apache License 2.0 license
 https://github.com/TRP-Solutions/heal-document/blob/master/LICENSE.txt
 */
-define('HEAL_ATTR_APPEND',1); // used in HealElement->at
-define('HEAL_ATTR_NO_ESCAPE',2); // used in HealElement->at
-define('HEAL_TEXT_NL2BR',1); // used in HealElement->te
 
 trait HealNodeParent {
 	public function el($name, $attributes = [], $attr_options = 0){
@@ -15,8 +12,8 @@ trait HealNodeParent {
 		return $element;
 	}
 
-	public function te($str, $text_options = 0){
-		if($text_options & HEAL_TEXT_NL2BR){
+	public function te($str, $break_on_newline = false){
+		if($break_on_newline){
 			$lines = explode("\n",$str);
 			$firstline = true;
 			foreach($lines as $line){
@@ -70,10 +67,10 @@ class HealDocument extends DOMDocument {
 	}
 
 	public function __toString(){
-		if(self::$toStringFormat=='html'){
-			return $this->saveHTML();
-		} elseif(!isset(self::$toStringFormat) && strtolower($this->firstChild->nodeName) == 'html'){
+		if((!isset(self::$toStringFormat) || self::$toStringFormat == 'html') && strtolower($this->firstChild->nodeName) == 'html'){
 			return "<!DOCTYPE html>".PHP_EOL.$this->saveHTML();
+		} elseif(self::$toStringFormat=='html'){
+			return $this->saveHTML();
 		} else {
 			$this->formatOutput = true;
 			return $this->saveXML();
@@ -84,16 +81,14 @@ class HealDocument extends DOMDocument {
 class HealElement extends DOMElement {
 	use HealNodeParent;
 
-	public function at($values, $options = 0){
-		$no_escape = $options & HEAL_ATTR_NO_ESCAPE;
-		$append = $options & HEAL_ATTR_APPEND;
+	public function at($values, $append = false){
 		foreach($values as $name => $value){
 			if(is_numeric($name)){
 				$attr = $this->ownerDocument->createAttribute($value);
 			} else {
 				$attr = $this->ownerDocument->createAttribute($name);
 				if(isset($value)){
-					$value = $no_escape ? $value : htmlspecialchars($value);
+					$value = htmlspecialchars($value);
 
 					if($append && $this->hasAttribute($name)){
 						$value = $this->getAttribute($name).' '.$value;
