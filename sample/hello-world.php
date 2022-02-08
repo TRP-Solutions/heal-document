@@ -3,10 +3,14 @@
 HealDocument is licensed under the Apache License 2.0 license
 https://github.com/TRP-Solutions/heal-document/blob/master/LICENSE.txt
 */
-require_once "../lib/HealHTML.php";
+require_once "../lib/HealDocument.php";
 
-$doc = new HealHtml();
-list($head,$body) = $doc->html('Hello World','en');
+$doc = new HealDocument('html');
+$html = $doc->el('html',['lang'=>'en']);
+$head = $html->el('head');
+$head->el('meta',['charset'=>'utf-8']);
+$head->el('title')->te('Hello World');
+$body = $html->el('body');
 
 $head->el('style')
 	->te('body { width: 650px; border: 1px solid black; padding: 0 1em; box-sizing: border-box; }')
@@ -15,8 +19,8 @@ $head->el('style')
 
 $body->el('h1')->te('Hello World');
 
-$body->p('This is a simple example of how a HTML document can be constructed.');
+$body->el('p')->te('This is a simple example of how a HTML document can be constructed.');
 
-$body->img('heal-logo.php','heal-document logo');
+$body->el('img',['src'=>'heal-logo.php','alt'=>'heal-document logo']);
 
 echo $doc;
