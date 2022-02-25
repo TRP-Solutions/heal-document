@@ -3,11 +3,11 @@
 HealDocument is licensed under the Apache License 2.0 license
 https://github.com/TRP-Solutions/heal-document/blob/master/LICENSE.txt
 */
-require_once "../lib/HealSVG.php";
+require_once "../lib/HealDocument.php";
 header("Content-Type: image/svg+xml");
 
-$doc = new HealSVG();
-$svg = $doc->svg(614,310);
+$doc = new HealDocument();
+$svg = $doc->el('svg', ['width'=>614,'height'=>310,'xmlns'=>'http://www.w3.org/2000/svg']);
 
 $dark = ['fill'=>'#333333'];
 $grey = ['fill'=>'#656565'];

@@ -5,10 +5,10 @@ https://github.com/TRP-Solutions/heal-document/blob/master/LICENSE.txt
 */
 
 trait HealNodeParent {
-	public function el($name, $attributes = [], $attr_options = 0){
+	public function el($name, $attributes = [], $append = false){
 		$element = static::createElementHeal($name);
 		$this->appendChild($element);
-		$element->at($attributes,$attr_options);
+		$element->at($attributes,$append);
 		return $element;
 	}
 
