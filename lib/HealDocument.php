@@ -72,7 +72,7 @@ class HealDocument extends DOMDocument {
 	public function __toString(){
 		$this->formatOutput = true;
 		if($this->toStringFormat == 'html'){
-			if(strtolower($this->firstChild->nodeName) == 'html'){
+			if(isset($this->firstChild->nodeName) && strtolower($this->firstChild->nodeName) == 'html'){
 				return "<!DOCTYPE html>".PHP_EOL.$this->saveHTML();
 			} else {
 				return $this->saveHTML();
