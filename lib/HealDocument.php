@@ -199,19 +199,19 @@ abstract class HealPlugin implements HealPluginInterface, HealComponent {
 	protected $primary_element;
 
 	public function el($name, $attributes = [], $append = false) : HealComponent {
-		$this->primary_element->el($name, $attributes, $append);
+		return $this->primary_element->el($name, $attributes, $append);
 	}
 
 	public function at($values, $append = false) : HealComponent {
-		$this->primary_element->at($values, $append);
+		return $this->primary_element->at($values, $append);
 	}
 	public function te($str, $break_on_newline = false) : HealComponent {
-		$this->primary_element->te($str, $break_on_newline);
+		return $this->primary_element->te($str, $break_on_newline);
 	}
 	public function co($str) : HealComponent {
-		$this->primary_element->co($str);
+		return $this->primary_element->co($str);
 	}
 	public function fr($str) : bool {
-		$this->primary_element->fr($str);
+		return $this->primary_element->fr($str);
 	}
 }
