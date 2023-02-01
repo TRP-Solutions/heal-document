@@ -12,7 +12,7 @@ trait htmlDesignTrait {
 	}
 
 	// Required precedence
-	protected static function createElementHeal($name){
+	protected static function createElementHeal($name) : HealComponent {
 		return new htmlDesignElement($name);
 	}
 }
