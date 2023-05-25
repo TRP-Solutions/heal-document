@@ -13,6 +13,7 @@ trait HealNodeParent {
 	}
 
 	public function te($str, $break_on_newline = false) : HealComponent {
+		if(!isset($str)) return $this;
 		if($break_on_newline){
 			$lines = explode("\n",$str);
 			$firstline = true;
