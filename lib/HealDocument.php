@@ -186,7 +186,7 @@ interface HealPluginInterface {
 
 abstract class HealPlugin implements HealPluginInterface, HealComponent {
 	public static function can_create($name) : bool{
-		return method_exists(static::class, $name);
+		return method_exists(static::class, $name) && (new ReflectionMethod(static::class, $name))->isStatic();
 	}
 
 	public static function create($parent, $name, ...$arguments) : HealComponent {
@@ -194,6 +194,9 @@ abstract class HealPlugin implements HealPluginInterface, HealComponent {
 			$object = static::$name($parent, ...$arguments);
 			if(is_a($object, static::class) && !isset($object->primary_element)){
 				$object->primary_element = $parent;
+			}
+			if(!is_a($object, 'HealComponent')){
+				throw new \Exception("HealPlugin failed to create element '$name': Returned element didn't implement HealComponent");
 			}
 			return $object;
 		} else {
@@ -218,5 +221,9 @@ abstract class HealPlugin implements HealPluginInterface, HealComponent {
 	}
 	public function fr($str) : bool {
 		return $this->primary_element->fr($str);
+	}
+
+	public function __call($name, $arguments){
+		return HealDocument::try_plugin($this->primary_element, $name, $arguments);
 	}
 }
