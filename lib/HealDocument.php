@@ -179,12 +179,40 @@ interface HealComponent {
 	public function fr($str) : bool;
 }
 
+abstract class HealWrapper implements HealComponent {
+	protected $primary_element;
+
+	public function el($name, $attributes = [], $append = false) : HealComponent {
+		return $this->primary_element->el($name, $attributes, $append);
+	}
+
+	public function at($values, $append = false) : HealComponent {
+		$this->primary_element->at($values, $append);
+		return $this;
+	}
+	public function te($str, $break_on_newline = false) : HealComponent {
+		$this->primary_element->te($str, $break_on_newline);
+		return $this;
+	}
+	public function co($str) : HealComponent {
+		$this->primary_element->co($str);
+		return $this;
+	}
+	public function fr($str) : bool {
+		$this->primary_element->fr($str);
+		return $this;
+	}
+	public function __call($name, $arguments){
+		return HealDocument::try_plugin($this->primary_element, $name, $arguments);
+	}
+}
+
 interface HealPluginInterface {
 	public static function can_create($name) : bool;
 	public static function create($parent, $name, ...$arguments) : HealComponent;
 }
 
-abstract class HealPlugin implements HealPluginInterface, HealComponent {
+abstract class HealPlugin extends HealWrapper implements HealPluginInterface {
 	public static function can_create($name) : bool{
 		return method_exists(static::class, $name) && (new ReflectionMethod(static::class, $name))->isStatic();
 	}
@@ -203,27 +231,5 @@ abstract class HealPlugin implements HealPluginInterface, HealComponent {
 			throw new \Exception("HealPlugin failed to find method '$name'");
 		}
 	}
-
-	protected $primary_element;
-
-	public function el($name, $attributes = [], $append = false) : HealComponent {
-		return $this->primary_element->el($name, $attributes, $append);
-	}
-
-	public function at($values, $append = false) : HealComponent {
-		return $this->primary_element->at($values, $append);
-	}
-	public function te($str, $break_on_newline = false) : HealComponent {
-		return $this->primary_element->te($str, $break_on_newline);
-	}
-	public function co($str) : HealComponent {
-		return $this->primary_element->co($str);
-	}
-	public function fr($str) : bool {
-		return $this->primary_element->fr($str);
-	}
-
-	public function __call($name, $arguments){
-		return HealDocument::try_plugin($this->primary_element, $name, $arguments);
-	}
 }
+
