@@ -203,7 +203,7 @@ abstract class HealWrapper implements HealComponent {
 		return $this;
 	}
 	public function __call($name, $arguments){
-		return HealDocument::try_plugin($this->primary_element, $name, $arguments);
+		return HealDocument::try_plugin($this, $name, $arguments);
 	}
 }
 
