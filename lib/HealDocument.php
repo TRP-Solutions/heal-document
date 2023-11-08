@@ -127,7 +127,7 @@ class HealDocument extends DOMDocument implements HealComponent {
 			if(!empty($prefix) && isset(self::$plugins[$prefix])){
 				$classname = self::$plugins[$prefix];
 				if($classname::can_create($name)){
-					self::$plugin_name_cache[$name] = $classname;
+					self::$plugin_name_cache[$fullname] = $classname;
 					return $classname::create($parent, $name, ...$arguments);
 				}
 			}
