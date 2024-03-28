@@ -15,7 +15,7 @@ trait HealNodeParent {
 	public function te($str, $break_on_newline = false) : HealComponent {
 		if(!isset($str)) return $this;
 		if($break_on_newline){
-			$lines = explode("\n",$str);
+			$lines = explode("\n",str_replace("\r",'',$str));
 			$firstline = true;
 			foreach($lines as $line){
 				if(!$firstline){
@@ -23,7 +23,7 @@ trait HealNodeParent {
 				} else {
 					$firstline = false;
 				}
-				$this->appendChild(new DOMText(str_replace("\r",'',$line)));
+				$this->appendChild(new DOMText($line));
 			}
 		} else {
 			$this->appendChild(new DOMText($str));
