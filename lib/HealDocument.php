@@ -23,7 +23,7 @@ trait HealNodeParent {
 				} else {
 					$firstline = false;
 				}
-				$this->appendChild(new DOMText($line));
+				$this->appendChild(new DOMText(str_replace("\r",'',$line)));
 			}
 		} else {
 			$this->appendChild(new DOMText($str));
