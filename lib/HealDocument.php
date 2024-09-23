@@ -16,7 +16,7 @@ trait HealNodeParent {
 	public function te($str, $break_on_newline = false) : HealComponent {
 		if(!isset($str)) return $this;
 		if($break_on_newline){
-			$lines = explode("\n",$str);
+			$lines = explode("\n",str_replace("\r",'',$str));
 			$firstline = true;
 			foreach($lines as $line){
 				if(!$firstline){
@@ -115,7 +115,9 @@ class HealDocument extends DOMDocument implements HealComponent {
 
 	public static function try_plugin($parent, $fullname, $arguments){
 		if(isset(self::$plugin_name_cache[$fullname])){
-			return self::$plugin_name_cache[$fullname]::create($parent, $fullname, ...$arguments);
+			$classname = self::$plugin_name_cache[$fullname][0];
+			$name = self::$plugin_name_cache[$fullname][1] ?? $fullname;
+			return $classname::create($parent, $name, ...$arguments);
 		}
 		if(self::$has_prefixed_plugins){
 			$split_name = explode('_',$fullname,2);
@@ -128,14 +130,14 @@ class HealDocument extends DOMDocument implements HealComponent {
 			if(!empty($prefix) && isset(self::$plugins[$prefix])){
 				$classname = self::$plugins[$prefix];
 				if($classname::can_create($name)){
-					self::$plugin_name_cache[$fullname] = $classname;
+					self::$plugin_name_cache[$fullname] = [$classname, $name];
 					return $classname::create($parent, $name, ...$arguments);
 				}
 			}
 		}
 		foreach(self::$plugins as $plugin){
 			if($plugin::can_create($fullname)){
-				self::$plugin_name_cache[$fullname] = $plugin;
+				self::$plugin_name_cache[$fullname] = [$plugin, null];
 				return $plugin::create($parent, $fullname, ...$arguments);
 			}
 		}
