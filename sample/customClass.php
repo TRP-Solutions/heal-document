@@ -1,4 +1,9 @@
 <?php
+/*
+HealDocument is licensed under the Apache License 2.0 license
+https://github.com/TRP-Solutions/heal-document/blob/master/LICENSE.txt
+*/
+declare(strict_types=1);
 require_once __DIR__.'/../lib/HealDocument.php';
 
 trait htmlDesignTrait {

@@ -3,6 +3,7 @@
 HealDocument is licensed under the Apache License 2.0 license
 https://github.com/TRP-Solutions/heal-document/blob/master/LICENSE.txt
 */
+declare(strict_types=1);
 
 trait HealNodeParent {
 	public function el($name, $attributes = [], $append = false) : HealComponent {
@@ -151,7 +152,7 @@ class HealElement extends DOMElement implements HealComponent {
 			} else {
 				$attr = $this->ownerDocument->createAttribute($name);
 				if(isset($value)){
-					$value = htmlspecialchars($value);
+					$value = htmlspecialchars((string) $value);
 
 					if($append && $this->hasAttribute($name)){
 						$value = $this->getAttribute($name).' '.$value;
