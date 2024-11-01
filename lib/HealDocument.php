@@ -141,6 +141,7 @@ class HealDocument extends DOMDocument implements HealComponent {
 				return $plugin::create($parent, $fullname, ...$arguments);
 			}
 		}
+		throw new \Exception("HealDocument can't find function '$fullname'");
 	}
 }
 
