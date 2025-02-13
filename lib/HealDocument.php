@@ -16,6 +16,7 @@ trait HealNodeParent {
 	public function te($str, $break_on_newline = false) : HealComponent {
 		if(!isset($str)) return $this;
 		if($break_on_newline){
+			if(!is_string($str)) $str = (string) $str;
 			$lines = explode("\n",str_replace("\r",'',$str));
 			$firstline = true;
 			foreach($lines as $line){
@@ -27,21 +28,21 @@ trait HealNodeParent {
 				$this->appendChild(new DOMText($line));
 			}
 		} else {
-			$this->appendChild(new DOMText($str));
+			$this->appendChild(new DOMText((string) $str));
 		}
 		// return $this to allow chaining
 		return $this;
 	}
 
 	public function co($str) : HealComponent {
-		$this->appendChild(new DOMComment($str));
+		$this->appendChild(new DOMComment((string) $str));
 		// return $this to allow chaining
 		return $this;
 	}
 
 	public function fr($str) : bool {
 		$fragment = $this->ownerDocument->createDocumentFragment();
-		if(@$fragment->appendXML($str)) {
+		if(@$fragment->appendXML((string) $str)) {
 			$this->appendChild($fragment);
 			return true;
 		}
@@ -236,4 +237,3 @@ abstract class HealPlugin extends HealWrapper implements HealPluginInterface {
 		}
 	}
 }
-
