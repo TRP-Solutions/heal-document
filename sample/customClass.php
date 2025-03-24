@@ -5,6 +5,7 @@ https://github.com/TRP-Solutions/heal-document/blob/master/LICENSE.txt
 */
 declare(strict_types=1);
 require_once __DIR__.'/../lib/HealDocument.php';
+use \TRP\HealDocument\{HealDocument, HealElement, HealComponent};
 
 trait htmlDesignTrait {
 	// Added function

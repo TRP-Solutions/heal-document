@@ -5,6 +5,8 @@ https://github.com/TRP-Solutions/heal-document/blob/master/LICENSE.txt
 */
 declare(strict_types=1);
 require_once "../lib/HealDocument.php";
+use \TRP\HealDocument\HealDocument;
+use \TRP\HealDocument\HealPlugin;
 
 class ExamplePlugin extends HealPlugin {
 	public static function labelled_input($parent, $label, $value, $name = null, $placeholder = null){

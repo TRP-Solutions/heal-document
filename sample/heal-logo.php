@@ -5,6 +5,7 @@ https://github.com/TRP-Solutions/heal-document/blob/master/LICENSE.txt
 */
 declare(strict_types=1);
 require_once "../lib/HealDocument.php";
+use \TRP\HealDocument\HealDocument;
 header("Content-Type: image/svg+xml");
 
 $doc = new HealDocument();
