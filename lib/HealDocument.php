@@ -159,7 +159,7 @@ class HealElement extends \DOMElement implements HealComponent {
 					$value = htmlspecialchars((string) $value);
 
 					if($append && $this->hasAttribute($name)){
-						$value = $this->getAttribute($name).' '.$value;
+						$value = htmlspecialchars($this->getAttribute($name)).' '.$value;
 					}
 					$attr->value = $value;
 				} else {
