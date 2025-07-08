@@ -5,7 +5,7 @@ https://github.com/TRP-Solutions/heal-document/blob/master/LICENSE.txt
 */
 declare(strict_types=1);
 require_once __DIR__.'/../lib/HealDocument.php';
-use \TRP\HealDocument\{HealDocument, HealElement, HealComponent};
+use \TRP\HealDocument\{HealDocument, Element, Component};
 
 trait htmlDesignTrait {
 	// Added function
@@ -18,7 +18,7 @@ trait htmlDesignTrait {
 	}
 
 	// Required precedence
-	protected static function createElementHeal($name) : HealComponent {
+	protected static function createElementHeal($name) : Component {
 		return new htmlDesignElement($name);
 	}
 }
@@ -27,7 +27,7 @@ class htmlDesign extends HealDocument {
 	use htmlDesignTrait;
 }
 
-class htmlDesignElement extends HealElement {
+class htmlDesignElement extends Element {
 	use htmlDesignTrait;
 }
 
