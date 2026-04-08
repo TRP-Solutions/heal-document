@@ -11,5 +11,5 @@ interface Component {
 	public function at(array $values, bool $append = false): Component;
 	public function te(string $str, bool $break_on_newline = false): Component;
 	public function co(string $str): Component;
-	public function fr(string $str): bool;
+	public function fr(string|Fragment $contents): bool;
 }

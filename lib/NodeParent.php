@@ -40,15 +40,19 @@ trait NodeParent {
 		return $this;
 	}
 
-	public function fr(string $str): bool {
-		$fragment = $this->ownerDocument->createDocumentFragment();
-		if(@$fragment->appendXML($str)) {
-			$this->appendChild($fragment);
-			return true;
-		}
-		else {
-			$this->te("Error in: \"".$str."\"");
-			return false;
+	public function fr(string|Fragment $contents): bool {
+		if($contents instanceof Fragment){
+			return $contents->appendTo($this);
+		} else {
+			$fragment = $this->ownerDocument->createDocumentFragment();
+			if(@$fragment->appendXML($str)) {
+				$this->appendChild($fragment);
+				return true;
+			}
+			else {
+				$this->te("Error in: \"".$str."\"");
+				return false;
+			}
 		}
 	}
 

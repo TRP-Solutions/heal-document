@@ -25,7 +25,7 @@ abstract class Wrapper implements Component {
 		$this->primary_element->co($str);
 		return $this;
 	}
-	public function fr(string $str): bool {
+	public function fr(string|Fragment $contents): bool {
 		return $this->primary_element->fr($str);
 	}
 	public function __call(string $name, array $arguments): ?Component {

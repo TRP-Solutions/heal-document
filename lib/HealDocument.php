@@ -8,6 +8,7 @@ namespace TRP\HealDocument;
 require_once __DIR__."/Component.php";
 require_once __DIR__."/NodeParent.php";
 require_once __DIR__."/Element.php";
+require_once __DIR__."/Fragment.php";
 require_once __DIR__."/Wrapper.php";
 require_once __DIR__."/PluginInterface.php";
 require_once __DIR__."/Plugin.php";
