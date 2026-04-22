@@ -23,10 +23,16 @@ $fragment = new Fragment();
 
 $fragment->el('h1')->te('Hello World');
 
-$fragment->el('p')->te('This is a simple example of a fragment of HTML can be created and then inserted in the document.');
+$fragment->el('p')->te('This is a simple example of how a fragment of HTML can be created and then inserted in the document.');
 
 $fragment->el('img',['src'=>'heal-logo.php','alt'=>'heal-document logo']);
 
 $body->fr($fragment);
+
+$html_fragment = <<<HTML
+	<p>And this paragraph is XML-compatible HTML that is inserted as a string.</p>
+	HTML;
+
+$body->fr($html_fragment);
 
 echo $doc;

@@ -45,12 +45,12 @@ trait NodeParent {
 			return $contents->appendTo($this);
 		} else {
 			$fragment = $this->ownerDocument->createDocumentFragment();
-			if(@$fragment->appendXML($str)) {
+			if(@$fragment->appendXML($contents)) {
 				$this->appendChild($fragment);
 				return true;
 			}
 			else {
-				$this->te("Error in: \"".$str."\"");
+				$this->te("Error in: \"".$contents."\"");
 				return false;
 			}
 		}
