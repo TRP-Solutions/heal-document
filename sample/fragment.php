@@ -4,7 +4,7 @@ HealDocument is licensed under the Apache License 2.0 license
 https://github.com/trp-solutions/HealDocument/blob/main/LICENSE
 */
 declare(strict_types=1);
-require_once "../lib/HealDocument.php";
+require_once __DIR__.'/../lib/autoload.php';
 use \TRP\HealDocument\{HealDocument,Fragment};
 
 $doc = new HealDocument('html');
