@@ -26,7 +26,7 @@ abstract class Wrapper implements Component {
 		return $this;
 	}
 	public function fr(string|Fragment $contents): bool {
-		return $this->primary_element->fr($str);
+		return $this->primary_element->fr($contents);
 	}
 	public function __call(string $name, array $arguments): ?Component {
 		return HealDocument::try_plugin($this, $name, $arguments);
